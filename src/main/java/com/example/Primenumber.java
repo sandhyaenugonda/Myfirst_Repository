@@ -1,22 +1,34 @@
 package com.sandhyaenugonda.prime;
 
 /**
- * Simple CLI to check a single integer argument.
+ * Utility to check whether a number is prime.
  */
-public class App {
-    public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Usage: java -jar prime-checker.jar <number>");
-            System.exit(1);
-        }
+public final class PrimeChecker {
 
-        try {
-            int n = Integer.parseInt(args[0]);
-            boolean prime = PrimeChecker.isPrime(n);
-            System.out.println(n + (prime ? " is prime" : " is not prime"));
-        } catch (NumberFormatException e) {
-            System.err.println("Invalid number: " + args[0]);
-            System.exit(2);
+    private PrimeChecker() {
+        // utility class
+    }
+
+    /**
+     * Returns true if n is prime, false otherwise.
+     * Handles negative numbers, 0 and 1 (non-prime).
+     */
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
         }
+        if (n <= 3) {
+            return true;
+        }
+        if (n % 2 == 0 || n % 3 == 0) {
+            return false;
+        }
+        // check 6k +/- 1 up to sqrt(n)
+        for (int i = 5; (long) i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
