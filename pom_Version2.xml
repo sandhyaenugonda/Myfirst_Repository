@@ -25,6 +25,13 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+             <!-- https://mvnrepository.com/artifact/jdk.tools/jdk.tools -->
+<dependency>
+    <groupId>jdk.tools</groupId>
+    <artifactId>jdk.tools</artifactId>
+    <version>21.0.2</version>
+    <scope>system</scope>
+</dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.jupiter.version}</version>
